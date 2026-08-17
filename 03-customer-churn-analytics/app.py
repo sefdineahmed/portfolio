@@ -7,7 +7,7 @@ from pathlib import Path
 # Configuration de la page
 st.set_page_config(
     page_title="Prédiction du Churn Client",
-    page_icon="📉",
+    
     layout="wide",
     initial_sidebar_state="expanded"
 )
