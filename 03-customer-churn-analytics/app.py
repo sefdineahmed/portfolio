@@ -45,7 +45,7 @@ with st.sidebar:
     3. Le modèle affichera la probabilité et le risque associé.
     """)
     st.divider()
-    st.caption("Projet réalisé Ahmed Sefdine")
+    st.caption("Projet réalisé par Ahmed Sefdine")
     st.caption("Modèle entraîné avec un ROC-AUC ≈ 0.85")
 
 # --- Création du formulaire (organisation en colonnes) ---
