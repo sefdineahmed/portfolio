@@ -29,11 +29,11 @@ Le jeu de données contient les ventes d'une grande surface américaine sur plus
 
 ## 4. Technologies
 
-- **Power BI** – création du dashboard interactif
-- **Power Query** – préparation et nettoyage des données
-- **DAX** – création de mesures et de KPI
-- **Excel** – exploration initiale
-- **Data Modeling** – conception du modèle en étoile
+- **Power BI** : création du dashboard interactif
+- **Power Query** : préparation et nettoyage des données
+- **DAX** : création de mesures et de KPI
+- **Excel** : exploration initiale
+- **Data Modeling** : conception du modèle en étoile
 
 
 ## 5. Méthodologie

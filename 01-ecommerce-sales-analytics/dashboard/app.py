@@ -16,8 +16,7 @@ st.set_page_config(
 
 
 # CHARGEMENT DES DONNÉES
-
-DATA_PATH = Path("data/data.csv")
+DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "data.csv"
 
 df = pd.read_csv(
     DATA_PATH,
