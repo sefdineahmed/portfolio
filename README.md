@@ -11,7 +11,7 @@ Chaque projet suit une méthodologie rigoureuse :
 ## Structure du portfolio
 
 ```
-sefdine-analytics-portfolio/
+sefdine-portfolio/
 │
 ├── README.md                        
 │
