@@ -1,1 +1,14 @@
-nyc-taxi/data/
+# NYC Taxi - gros fichiers de données
+nyc-taxi/data/*.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environnements / secrets
+.env
+
+# Jupyter
+.ipynb_checkpoints/
