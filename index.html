@@ -1,490 +1,307 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ahmed Sefdine · BI Analyst Junior</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a202c; line-height: 1.7; overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      height: 68px; display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; background: rgba(255,255,255,0.97);
-      border-bottom: 1px solid #e2e8f0; box-shadow: 0 1px 12px rgba(0,0,0,0.06);
-    }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: #2563eb; }
-    .nav-links { display: flex; gap: 1.8rem; align-items: center; }
-    .nav-links a { font-size: 0.83rem; font-weight: 500; color: #4a5568; letter-spacing: 0.05em; transition: color 0.2s; }
-    .nav-links a:hover { color: #2563eb; }
-    .nav-cta { background: #2563eb !important; color: #fff !important; padding: 0.45rem 1.1rem; border-radius: 7px; font-weight: 600 !important; }
-    .nav-cta:hover { background: #1d4ed8 !important; color: #fff !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { display: block; width: 23px; height: 2px; background: #374151; border-radius: 2px; }
-
-    /* MOBILE MENU */
-    .mobile-menu {
-      display: none; position: fixed; inset: 0; z-index: 999;
-      background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 1.6rem; font-family: 'Playfair Display', serif; color: #1a202c; }
-    .mobile-menu a:hover { color: #2563eb; }
-    .mobile-close { position: absolute; top: 1.5rem; right: 2rem; font-size: 1.8rem; cursor: pointer; color: #6b7280; }
-
-    /* SECTIONS */
-    section { padding: 5rem 5%; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #2563eb; margin-bottom: 0.4rem; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; color: #0f172a; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    .section-sub { font-size: 0.92rem; color: #6b7280; margin-bottom: 2.5rem; max-width: 520px; }
-    .divider { height: 3px; width: 50px; background: #2563eb; border-radius: 2px; margin-bottom: 2.5rem; }
-
-    /* HERO */
-    #hero {
-      min-height: 100vh; padding-top: 68px;
-      display: flex; align-items: center;
-      background: linear-gradient(135deg, #f8faff 0%, #eef2ff 50%, #f0f9ff 100%);
-      position: relative; overflow: hidden;
-    }
-    #hero::before {
-      content: ''; position: absolute; top: -100px; right: -100px;
-      width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%); pointer-events: none;
-    }
-    .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 260px; gap: 3rem; align-items: center; position: relative; padding: 3rem 0; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 1rem; border-radius: 100px; margin-bottom: 1.2rem; }
-    .pulse { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse-anim 2s ease-in-out infinite; }
-    @keyframes pulse-anim { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.6)} }
-    .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 900; color: #0f172a; line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-    .hero-name span { color: #2563eb; }
-    .hero-title { font-size: 1rem; font-weight: 600; color: #4b5563; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
-    .hero-quote { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: #3b82f6; border-left: 3px solid #bfdbfe; padding-left: 1rem; margin-bottom: 1.3rem; }
-    .hero-bio { font-size: 0.93rem; color: #4b5563; line-height: 1.9; max-width: 560px; margin-bottom: 1.8rem; }
-    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 2.5rem; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 0.45rem; background: #2563eb; color: #fff; font-size: 0.84rem; font-weight: 700; padding: 0.7rem 1.5rem; border-radius: 8px; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
-    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.3); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 0.45rem; background: #fff; color: #374151; border: 1.5px solid #d1d5db; font-size: 0.84rem; font-weight: 500; padding: 0.68rem 1.3rem; border-radius: 8px; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
-    .btn-outline:hover { border-color: #2563eb; color: #2563eb; transform: translateY(-2px); }
-    .hero-stats { display: flex; border: 1.5px solid #e2e8f0; border-radius: 14px; background: #fff; box-shadow: 0 4px 20px rgba(37,99,235,0.07); overflow: hidden; max-width: 620px; }
-    .stat-item { flex: 1; padding: 1rem; text-align: center; border-right: 1px solid #e2e8f0; }
-    .stat-item:last-child { border-right: none; }
-    .stat-n { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 900; color: #2563eb; line-height: 1; }
-    .stat-l { font-size: 0.67rem; color: #9ca3af; margin-top: 0.2rem; }
-    .hero-avatar { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
-    .avatar-ring { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #60a5fa); padding: 3px; box-shadow: 0 8px 32px rgba(37,99,235,0.2); }
-    .avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: #2563eb; }
-    .avatar-loc { font-size: 0.75rem; color: #6b7280; }
-
-    /* ABOUT */
-    #about { background: #f8fafc; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .about-text p { font-size: 0.93rem; color: #374151; line-height: 1.9; margin-bottom: 1rem; }
-    .about-text strong { color: #0f172a; }
-    .soft-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #2563eb; margin-bottom: 0.8rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .chip { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; font-size: 0.78rem; font-weight: 500; padding: 0.35rem 0.85rem; border-radius: 100px; transition: background 0.2s, color 0.2s; }
-    .chip:hover { background: #dbeafe; color: #1d4ed8; }
-
-    /* SKILLS */
-    #skills { background: #fff; }
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .skill-card { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 1.6rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
-    .skill-card:hover { border-color: #93c5fd; box-shadow: 0 8px 28px rgba(37,99,235,0.10); transform: translateY(-3px); }
-    .skill-card-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2563eb; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1.5px solid #e0e7ff; }
-    .skill-row { margin-bottom: 0.9rem; }
-    .skill-row:last-child { margin-bottom: 0; }
-    .skill-label { display: flex; justify-content: space-between; margin-bottom: 0.3rem; }
-    .skill-name { font-size: 0.84rem; color: #1f2937; font-weight: 500; }
-    .skill-pct { font-size: 0.74rem; color: #9ca3af; }
-    .skill-bar { height: 6px; background: #e5e7eb; border-radius: 100px; overflow: hidden; }
-    .skill-fill { height: 100%; border-radius: 100px; }
-    .langs-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #0f172a; margin: 3rem 0 1.2rem; }
-    .langs-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.8rem; }
-    .lang-card { display: flex; align-items: center; gap: 0.9rem; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 0.9rem 1.2rem; box-shadow: 0 1px 6px rgba(0,0,0,0.04); transition: border-color 0.2s; }
-    .lang-card:hover { border-color: #93c5fd; }
-    .lang-flag { font-size: 1.5rem; }
-    .lang-name { font-size: 0.86rem; font-weight: 600; color: #1f2937; }
-    .lang-level { font-size: 0.73rem; color: #9ca3af; }
-    .lang-bars { display: flex; gap: 3px; margin-left: auto; }
-    .lbar { width: 9px; height: 22px; border-radius: 3px; background: #e5e7eb; }
-    .lbar.on { background: #2563eb; }
-
-    /* EXPERIENCE */
-    #experience { background: #f8fafc; }
-    .timeline { position: relative; padding-left: 2.5rem; }
-    .timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #2563eb, #bfdbfe, transparent); }
-    .tl-item { position: relative; margin-bottom: 1.8rem; }
-    .tl-dot { position: absolute; left: -2.9rem; top: 1.2rem; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 2.5px solid #2563eb; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 0 0 4px #eff6ff; }
-    .tl-card { background: #fff; border: 1.5px solid #e2e8f0; border-left: 4px solid #2563eb; border-radius: 12px; padding: 1.4rem 1.6rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: box-shadow 0.25s, transform 0.25s; }
-    .tl-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,0.10); transform: translateX(4px); }
-    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
-    .tl-role { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: #0f172a; }
-    .tl-badge { background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-size: 0.68rem; font-weight: 600; padding: 0.22rem 0.8rem; border-radius: 100px; white-space: nowrap; }
-    .tl-company { font-size: 0.85rem; color: #2563eb; font-weight: 600; margin-bottom: 0.1rem; }
-    .tl-place { font-size: 0.75rem; color: #9ca3af; margin-bottom: 0.8rem; }
-    .tl-points { padding: 0; }
-    .tl-points li { font-size: 0.84rem; color: #374151; line-height: 1.8; padding-left: 1.1rem; position: relative; }
-    .tl-points li::before { content: '▸'; position: absolute; left: 0; color: #2563eb; font-size: 0.6rem; top: 0.5em; }
-
-    /* PROJECTS */
-    #projects { background: #fff; }
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
-    .pj-card { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 1.7rem; position: relative; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
-    .pj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #2563eb, #60a5fa); }
-    .pj-card:hover { border-color: #93c5fd; transform: translateY(-4px); box-shadow: 0 12px 36px rgba(37,99,235,0.12); }
-    .pj-period { font-size: 0.7rem; color: #9ca3af; margin-bottom: 0.7rem; }
-    .pj-icon { font-size: 1.9rem; margin-bottom: 0.7rem; }
-    .pj-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 0.6rem; line-height: 1.35; }
-    .pj-desc { font-size: 0.82rem; color: #4b5563; line-height: 1.8; margin-bottom: 0.9rem; }
-    .pj-impact { display: inline-flex; align-items: center; gap: 0.3rem; background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; font-size: 0.71rem; font-weight: 600; padding: 0.22rem 0.7rem; border-radius: 100px; margin-bottom: 0.8rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .tag { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; font-size: 0.68rem; font-weight: 500; padding: 0.18rem 0.65rem; border-radius: 100px; }
-
-    /* FORMATION */
-    #formation { background: #f8fafc; }
-    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-    .edu-card { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 1.5rem 1.7rem; position: relative; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
-    .edu-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #2563eb, #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-    .edu-card:hover { border-color: #93c5fd; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.10); }
-    .edu-card:hover::after { transform: scaleX(1); }
-    .edu-stars { display: flex; gap: 2px; margin-bottom: 0.7rem; }
-    .star { font-size: 0.85rem; color: #f59e0b; }
-    .star.off { color: #d1d5db; }
-    .edu-degree { font-family: 'Playfair Display', serif; font-size: 0.97rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem; line-height: 1.35; }
-    .edu-inst { font-size: 0.83rem; color: #2563eb; font-weight: 600; margin-bottom: 0.25rem; }
-    .edu-meta { font-size: 0.74rem; color: #9ca3af; }
-
-    /* CONTACT */
-    #contact { background: #fff; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .contact-list { display: flex; flex-direction: column; gap: 0.75rem; }
-    .ct-card { display: flex; align-items: center; gap: 0.9rem; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 0.9rem 1.2rem; box-shadow: 0 1px 6px rgba(0,0,0,0.04); transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
-    .ct-card:hover { border-color: #93c5fd; transform: translateX(4px); box-shadow: 0 4px 16px rgba(37,99,235,0.09); }
-    .ct-icon { width: 40px; height: 40px; border-radius: 10px; background: #eff6ff; border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-    .ct-label { font-size: 0.67rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.15rem; }
-    .ct-value { font-size: 0.85rem; color: #1f2937; font-weight: 500; }
-    .ct-value a { color: #2563eb; }
-    .ct-value a:hover { text-decoration: underline; }
-    .form-box { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 2rem; box-shadow: 0 2px 14px rgba(0,0,0,0.05); }
-    .form-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 1.3rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6b7280; margin-bottom: 0.4rem; }
-    .form-group input, .form-group textarea { width: 100%; background: #fff; border: 1.5px solid #d1d5db; border-radius: 8px; padding: 0.7rem 1rem; color: #1f2937; font-family: 'Inter', sans-serif; font-size: 0.86rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; resize: vertical; }
-    .form-group input:focus, .form-group textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.08); }
-    .form-group textarea { min-height: 110px; }
-    .submit-btn { width: 100%; padding: 0.8rem; background: #2563eb; color: #fff; border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.87rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.2s; }
-    .submit-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
-    .form-ok { display: none; margin-top: 1rem; padding: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; color: #15803d; font-size: 0.85rem; text-align: center; }
-
-    /* FOOTER */
-    footer { background: #f1f5f9; border-top: 1px solid #e2e8f0; padding: 2.2rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: #2563eb; }
-    .footer-sub { font-size: 0.73rem; color: #9ca3af; margin-top: 0.2rem; }
-    .footer-links { display: flex; gap: 1.2rem; align-items: center; }
-    .footer-links a { font-size: 0.76rem; color: #6b7280; transition: color 0.2s; }
-    .footer-links a:hover { color: #2563eb; }
-
-    /* BACK TO TOP */
-    #btt { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; border-radius: 50%; background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; box-shadow: 0 4px 16px rgba(37,99,235,0.3); z-index: 99; }
-    #btt.show { opacity: 1; pointer-events: auto; }
-    #btt:hover { transform: translateY(-3px); }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-avatar { order: -1; }
-      .hero-bio, .hero-quote { margin-left: auto; margin-right: auto; }
-      .hero-btns { justify-content: center; }
-      .hero-stats { margin-left: auto; margin-right: auto; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .skills-grid, .langs-grid, .projects-grid, .edu-grid { grid-template-columns: 1fr; }
-      section { padding: 3.5rem 4%; }
-      footer { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 480px) {
-      .hero-stats { flex-direction: column; }
-      .stat-item { border-right: none; border-bottom: 1px solid #e2e8f0; }
-      .stat-item:last-child { border-bottom: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV d'Ahmed Sefdine, Data Analyst spécialisé en statistiques, Business Intelligence et Machine Learning, Master 2 Statistique et Informatique Décisionnelle - UADB, Dakar, Sénégal">
+    <meta name="keywords" content="CV, Resume, Ahmed Sefdine, Data Analyst, Data Scientist, Statistiques, Power BI, Python, SQL, Business Intelligence, Machine Learning, ANSD, UADB, Dakar, Sénégal">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Ahmed Sefdine | Data Analyst</title>
 </head>
 <body>
+    <main class="main-wrapper"> <!--#main-wrapper -->
+        <header id="main-header">
+            <div class="left">
+                <h1>AHMED SEFDINE</h1>
+                <nav id="navbar">
+                    <ul>
+                        <li class="item"><i class="fas fa-at"></i> ahmed.sefdine@uadb.edu.sn</li>
+                        <li class="item"><i class="fas fa-phone-alt"></i> +221 77 808 09 42</li>
+                        <li class="item"><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/sefdineahmed" target="_blank" title="Profil LinkedIn">linkedin.com/in/sefdineahmed</a></li>
+                        <li class="item"><i class="fab fa-github"></i> <a href="https://github.com/sefdineahmed" target="_blank" title="Compte GitHub">github.com/sefdineahmed</a></li>
+                        <li class="item"><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right">
+                <img src="images/avatar.svg" alt="Photo de profil Ahmed Sefdine">
+            </div>
+            <div class="clr"></div>
+        </header>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">AS.</div>
-  <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#skills">Compétences</a></li>
-    <li><a href="#experience">Expérience</a></li>
-    <li><a href="#projects">Projets</a></li>
-    <li><a href="#formation">Formation</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
-  </ul>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-</nav>
-<div class="mobile-menu" id="mmenu">
-  <span class="mobile-close" id="mclose">✕</span>
-  <a href="#about" onclick="document.getElementById('mmenu').classList.remove('open')">À propos</a>
-  <a href="#skills" onclick="document.getElementById('mmenu').classList.remove('open')">Compétences</a>
-  <a href="#experience" onclick="document.getElementById('mmenu').classList.remove('open')">Expérience</a>
-  <a href="#projects" onclick="document.getElementById('mmenu').classList.remove('open')">Projets</a>
-  <a href="#formation" onclick="document.getElementById('mmenu').classList.remove('open')">Formation</a>
-  <a href="#contact" onclick="document.getElementById('mmenu').classList.remove('open')">Contact</a>
-</div>
+        <section class="left-side"> <!-- #left-side -->
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-user fa-sm"></i> PROFIL</h2>
+                <div class="hr"></div>
+                <p class="job-desc">Analyste de données rigoureux, titulaire d'un Master 2 en Statistique et Informatique Décisionnelle et fort de trois expériences réussies en environnement institutionnel (ANSD, INSEED, ANACM). Je transforme des données brutes en <strong>insights stratégiques</strong> grâce à une maîtrise avancée de Python, SQL et Power BI. Passionné par la modélisation prédictive et la data visualisation, je souhaite mettre ma double compétence &mdash; statistique et développement &mdash; au service d'une équipe data innovante.</p>
+            </div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-badge"><span class="pulse"></span>Disponible · Open to opportunities</div>
-      <h1 class="hero-name">Ahmed<br><span>Sefdine</span></h1>
-      <div class="hero-title">Business Intelligence Analyst Junior</div>
-      <p class="hero-quote">« Transformer la donnée brute en décisions éclairées. »</p>
-      <p class="hero-bio">Jeune diplômé passionné par l'analyse de données, la statistique appliquée et la Business Intelligence. Fort d'expériences variées en environnements académiques, institutionnels et médicaux, je maîtrise l'ensemble de la chaîne analytique — de la collecte à la visualisation — avec Python, SQL, Power BI et Talend.</p>
-      <div class="hero-btns">
-        <a href="mailto:ahmed.sefdine@uadb.edu.sn" class="btn-primary"><i class="fa fa-envelope"></i> Me contacter</a>
-        <a href="https://www.linkedin.com/in/sefdineahmed/" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/sefdineahmed" target="_blank" class="btn-outline"><i class="fab fa-github"></i> GitHub</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item"><div class="stat-n">4+</div><div class="stat-l">Années études spécialisées</div></div>
-        <div class="stat-item"><div class="stat-n">4</div><div class="stat-l">Expériences professionnelles</div></div>
-        <div class="stat-item"><div class="stat-n">10+</div><div class="stat-l">Outils & technologies</div></div>
-        <div class="stat-item"><div class="stat-n">3</div><div class="stat-l">Pays d'expérience</div></div>
-      </div>
-    </div>
-    <div class="hero-avatar">
-      <div class="avatar-ring"><div class="avatar-inner">AS</div></div>
-      <div class="avatar-loc">📍 Dakar, Sénégal</div>
-    </div>
-  </div>
-</section>
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-briefcase fa-sm"></i> EXPÉRIENCES PROFESSIONNELLES</h2>
+                <div class="hr"></div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-tag">Qui suis-je ?</div>
-    <h2 class="section-title">À propos</h2>
-    <div class="divider"></div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>Diplômé d'un <strong>Master II en Statistique et Informatique Décisionnelle</strong> de l'Université Alioune Diop (Bambey, Sénégal), je me spécialise dans la transformation de données complexes en insights actionnables. Mon parcours international — entre les Comores et le Sénégal — m'a offert une vision large des enjeux analytiques.</p>
-        <p>J'interviens sur l'intégralité de la chaîne de valeur de la donnée : collecte terrain (KoboToolbox), nettoyage et traitement (Python/pandas), modélisation statistique et machine learning, puis restitution visuelle via Power BI ou Matplotlib.</p>
-        <p>Rigueur, curiosité analytique et sens de la communication sont mes atouts. Ouvert à des opportunités en <em>BI Analyst</em>, <em>Data Analyst Junior</em> ou <em>Statisticien</em>.</p>
-      </div>
-      <div>
-        <div class="soft-title"><i class="fa fa-star" style="color:#f59e0b"></i>&nbsp; Soft Skills</div>
-        <div class="chips">
-          <span class="chip">Rigueur analytique</span><span class="chip">Communication des résultats</span>
-          <span class="chip">Esprit de synthèse</span><span class="chip">Travail en équipe</span>
-          <span class="chip">Autonomie</span><span class="chip">Adaptabilité interculturelle</span>
-          <span class="chip">Curiosité intellectuelle</span><span class="chip">Sens du détail</span>
-          <span class="chip">Gestion des priorités</span><span class="chip">Pédagogie</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+                <h4 class="sigle">Analyste de Données Junior</h4>
+                <h5 class="job-school">Agence Nationale de la Statistique et de la Démographie (ANSD)</h5>
+                <h6 class="time-location">
+                    <span><i class="fas fa-calendar-alt"></i> Oct 2025 &hyphen; Déc 2025</span>
+                    <span class="city"><i class="fas fa-map-marker-alt"></i> Diourbel, Sénégal</span>
+                </h6>
+                <ul>
+                    <li><span class="achievement">Coordination de la collecte de données socio-économiques auprès de 20 services publics, aboutissant à la consolidation d'une base de données régionale unique</span></li>
+                    <li><span class="achievement">Mise en place d'un processus de nettoyage et de validation des données, réduisant de 30% les erreurs de saisie</span></li>
+                    <li><span class="achievement">Participation active à la rédaction du Rapport sur la Situation Économique et Sociale (RSES) 2024 de la région de Diourbel</span></li>
+                </ul>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-tag">Stack technique</div>
-    <h2 class="section-title">Compétences</h2>
-    <p class="section-sub">De la collecte à la visualisation, un stack complet orienté BI et Data.</p>
-    <div class="divider"></div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-title"><i class="fa fa-chart-bar"></i>&nbsp; BI & Visualisation</div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Power BI</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Matplotlib / Seaborn</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Excel avancé</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Tableau (notions)</span><span class="skill-pct">55%</span></div><div class="skill-bar"><div class="skill-fill" style="width:55%;background:linear-gradient(90deg,#e97627,#fb923c)"></div></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><i class="fa fa-code"></i>&nbsp; Langages & Données</div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Python (pandas, numpy, sklearn)</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%;background:linear-gradient(90deg,#3776ab,#5b9bd5)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">SQL (PostgreSQL, MySQL)</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%;background:linear-gradient(90deg,#336791,#4a90c4)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">LaTeX</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%;background:linear-gradient(90deg,#008080,#20b2aa)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">R (notions)</span><span class="skill-pct">55%</span></div><div class="skill-bar"><div class="skill-fill" style="width:55%;background:linear-gradient(90deg,#276dc3,#4a90e2)"></div></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><i class="fa fa-database"></i>&nbsp; Data Engineering & ETL</div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Talend Open Studio</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%;background:linear-gradient(90deg,#ff6d00,#ff9800)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">KoboToolbox</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%;background:linear-gradient(90deg,#23b5d3,#4dd0e1)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Access & SGBD</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%;background:linear-gradient(90deg,#a4373a,#c0504d)"></div></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><i class="fa fa-brain"></i>&nbsp; Statistiques & Machine Learning</div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Statistiques desc. / inférentielles</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Modèles de survie</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">Machine Learning supervisé</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%;background:linear-gradient(90deg,#8b5cf6,#a78bfa)"></div></div></div>
-        <div class="skill-row"><div class="skill-label"><span class="skill-name">SPSS</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%;background:linear-gradient(90deg,#005c7b,#0284c7)"></div></div></div>
-      </div>
-    </div>
-    <div class="langs-title">🌍 Langues</div>
-    <div class="langs-grid">
-      <div class="lang-card"><div class="lang-flag">🇫🇷</div><div><div class="lang-name">Français</div><div class="lang-level">Courant – professionnel</div></div><div class="lang-bars"><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div></div></div>
-      <div class="lang-card"><div class="lang-flag">🇰🇲</div><div><div class="lang-name">Arabe</div><div class="lang-level">Langue maternelle</div></div><div class="lang-bars"><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div><div class="lbar"></div></div></div>
-      <div class="lang-card"><div class="lang-flag">🌍</div><div><div class="lang-name">Shingazidja</div><div class="lang-level">Langue maternelle</div></div><div class="lang-bars"><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div></div></div>
-      <div class="lang-card"><div class="lang-flag">🇬🇧</div><div><div class="lang-name">Anglais</div><div class="lang-level">Intermédiaire – technique</div></div><div class="lang-bars"><div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div><div class="lbar"></div><div class="lbar"></div></div></div>
-    </div>
-  </div>
-</section>
+                <div class="dashed-hr"></div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-tag">Parcours professionnel</div>
-    <h2 class="section-title">Expériences</h2>
-    <p class="section-sub">Des environnements variés — institutionnels, médicaux, aéronautiques — qui m'ont forgé une vision à 360° de la donnée.</p>
-    <div class="divider"></div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot">🏛️</div>
-        <div class="tl-card">
-          <div class="tl-header"><div><div class="tl-role">Analyste de Données Junior</div><div class="tl-company">Agence Nationale de Statistique et Démographique (ANSD)</div><div class="tl-place">📍 Diourbel, Sénégal</div></div><div class="tl-badge">Oct. 2025 – Aujourd'hui · Stage en cours</div></div>
-          <ul class="tl-points"><li>Collecte, nettoyage et traitement de données économiques et sociales</li><li>Contribution à la rédaction du Rapport sur la Situation Économique et Sociale 2024</li><li>Centralisation et consolidation des données issues des services sectoriels</li><li>Mise à jour et maintenance de maquettes statistiques</li></ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot">🏥</div>
-        <div class="tl-card">
-          <div class="tl-header"><div><div class="tl-role">Data Analyst – Modélisation de Survie</div><div class="tl-company">Hôpital Aristide Le Dantec</div><div class="tl-place">📍 Dakar, Sénégal</div></div><div class="tl-badge">Déc. 2024 – Avr. 2025 · Stage</div></div>
-          <ul class="tl-points"><li>Analyse de survie sur données patients atteints de cancer de l'estomac</li><li>Modélisation statistique : Kaplan-Meier, modèle de Cox proportionnel</li><li>Implémentation ML : Random Survival Forest, Deep Survival Networks</li><li>Comparaison de performances et aide à la décision clinique</li></ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot">📈</div>
-        <div class="tl-card">
-          <div class="tl-header"><div><div class="tl-role">Assistant Statistique</div><div class="tl-company">Institut National de Statistique (INSEED)</div><div class="tl-place">📍 Moroni, Comores</div></div><div class="tl-badge">Mai – Déc. 2021 · Stage</div></div>
-          <ul class="tl-points"><li>Collecte, traitement et analyse des indices des prix à la consommation (IPC)</li><li>Rédaction de rapports trimestriels et présentation des résultats</li><li>Participation à l'amélioration des méthodologies de collecte terrain</li></ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot">✈️</div>
-        <div class="tl-card">
-          <div class="tl-header"><div><div class="tl-role">Analyste de Données Aériennes</div><div class="tl-company">Agence Nationale de l'Aviation Civile et de la Météorologie</div><div class="tl-place">📍 Moroni, Comores</div></div><div class="tl-badge">Juil. – Sept. 2019 · Stage</div></div>
-          <ul class="tl-points"><li>Analyse descriptive du trafic aérien sur la période 2005–2017</li><li>Création de visualisations et synthèse des indicateurs clés de performance</li></ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+                <h4 class="sigle">Assistant Statistique</h4>
+                <h5 class="job-school">Institut National de la Statistique (INSEED)</h5>
+                <h6 class="time-location">
+                    <span><i class="fas fa-calendar-alt"></i> Mai 2021 &hyphen; Déc 2021</span>
+                    <span class="city"><i class="fas fa-map-marker-alt"></i> Moroni, Comores</span>
+                </h6>
+                <ul>
+                    <li><span class="achievement">Calcul et analyse des indices des prix à la consommation pour les rapports trimestriels</span></li>
+                    <li><span class="achievement">Présentation des résultats et tendances économiques devant le comité de direction</span></li>
+                    <li><span class="achievement">Proposition de nouvelles méthodologies de collecte terrain, réduisant les délais de remontée d'information</span></li>
+                </ul>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-tag">Réalisations</div>
-    <h2 class="section-title">Projets Data & BI</h2>
-    <p class="section-sub">Projets concrets alliant rigueur statistique, ingénierie de données et visualisation.</p>
-    <div class="divider"></div>
-    <div class="projects-grid">
-      <div class="pj-card"><div class="pj-period">2024 – 2025</div><div class="pj-icon">🔬</div><div class="pj-title">Analyse de Survie – Cancer de l'Estomac</div><p class="pj-desc">Modélisation complète de la survie de patients. Comparaison Cox / Kaplan-Meier et ML (RSF, DeepSurv). Identification des facteurs de risque pour aide à la décision clinique.</p><div class="pj-impact">✦ C-index &gt; 78%</div><div class="tags"><span class="tag">Python</span><span class="tag">scikit-survival</span><span class="tag">Kaplan-Meier</span><span class="tag">Random Forest</span></div></div>
-      <div class="pj-card"><div class="pj-period">2019</div><div class="pj-icon">✈️</div><div class="pj-title">Dashboard BI – Trafic Aérien Comorien</div><p class="pj-desc">Tableau de bord interactif analysant 12 ans de données du trafic aérien. KPIs dynamiques, segmentation par routes et périodes, filtres temporels avancés.</p><div class="pj-impact">✦ 12 ans de données · KPIs temps réel</div><div class="tags"><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">DAX</span></div></div>
-      <div class="pj-card"><div class="pj-period">2021</div><div class="pj-icon">⚙️</div><div class="pj-title">Pipeline ETL – Indices des Prix (IPC)</div><p class="pj-desc">Automatisation de la collecte et du traitement des données IPC. Pipeline ETL Talend pour alimenter des rapports trimestriels standardisés.</p><div class="pj-impact">✦ −60% temps de traitement</div><div class="tags"><span class="tag">Python</span><span class="tag">Talend</span><span class="tag">SQL</span><span class="tag">KoboToolbox</span></div></div>
-      <div class="pj-card"><div class="pj-period">2025</div><div class="pj-icon">📋</div><div class="pj-title">Rapport RSES 2024 – Sénégal</div><p class="pj-desc">Contribution au Rapport sur la Situation Économique et Sociale du Sénégal 2024. Collecte multi-sources, consolidation sectorielle, rédaction analytique.</p><div class="pj-impact">✦ Publication nationale officielle</div><div class="tags"><span class="tag">Python</span><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Reporting</span></div></div>
-    </div>
-  </div>
-</section>
+                <div class="dashed-hr"></div>
 
-<!-- FORMATION -->
-<section id="formation">
-  <div class="section-inner">
-    <div class="section-tag">Parcours académique</div>
-    <h2 class="section-title">Formation</h2>
-    <p class="section-sub">Un cursus rigoureux en mathématiques, statistiques et informatique décisionnelle.</p>
-    <div class="divider"></div>
-    <div class="edu-grid">
-      <div class="edu-card"><div class="edu-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="edu-degree">Master II – Statistique et Informatique Décisionnelle</div><div class="edu-inst">🏛️ Université Alioune Diop</div><div class="edu-meta">📍 Bambey, Sénégal &nbsp;·&nbsp; 📅 2022 – 2025</div></div>
-      <div class="edu-card"><div class="edu-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star off">★</span></div><div class="edu-degree">Licence Pro – Mathématiques, Statistique & Informatique Décisionnelle</div><div class="edu-inst">🏛️ Université des Comores</div><div class="edu-meta">📍 Moroni, Comores &nbsp;·&nbsp; 📅 2019 – 2020</div></div>
-      <div class="edu-card"><div class="edu-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star off">★</span><span class="star off">★</span></div><div class="edu-degree">DUT – Statistique</div><div class="edu-inst">🏛️ Université des Comores</div><div class="edu-meta">📍 Moroni, Comores &nbsp;·&nbsp; 📅 2017 – 2019</div></div>
-      <div class="edu-card"><div class="edu-stars"><span class="star">★</span><span class="star">★</span><span class="star off">★</span><span class="star off">★</span><span class="star off">★</span></div><div class="edu-degree">Baccalauréat Scientifique (TD)</div><div class="edu-inst">🏛️ École Franco-Arabe de Dimani</div><div class="edu-meta">📍 Ntsoralé, Comores &nbsp;·&nbsp; 📅 2016 – 2017</div></div>
-    </div>
-  </div>
-</section>
+                <h4 class="sigle">Analyste de Données Aériennes</h4>
+                <h5 class="job-school">Agence Nationale de l'Aviation Civile et de la Météorologie (ANACM)</h5>
+                <h6 class="time-location">
+                    <span><i class="fas fa-calendar-alt"></i> Juil 2019 &hyphen; Sep 2019</span>
+                    <span class="city"><i class="fas fa-map-marker-alt"></i> Moroni, Comores</span>
+                </h6>
+                <ul>
+                    <li><span class="achievement">Réalisation d'une étude descriptive complète du trafic aérien national sur 12 ans (2005&ndash;2017)</span></li>
+                    <li><span class="achievement">Rédaction d'un rapport de synthèse stratégique à destination de la direction</span></li>
+                </ul>
+            </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-tag">Restons en contact</div>
-    <h2 class="section-title">Contact</h2>
-    <p class="section-sub">Disponible pour des opportunités BI / Data Analyst Junior.</p>
-    <div class="divider"></div>
-    <div class="contact-grid">
-      <div class="contact-list">
-        <div class="ct-card"><div class="ct-icon">✉️</div><div><div class="ct-label">Email professionnel</div><div class="ct-value"><a href="mailto:ahmed.sefdine@uadb.edu.sn">ahmed.sefdine@uadb.edu.sn</a></div></div></div>
-        <div class="ct-card"><div class="ct-icon">📱</div><div><div class="ct-label">Téléphone / WhatsApp</div><div class="ct-value"><a href="tel:+221778080942">+221 77 808 09 42</a></div></div></div>
-        <div class="ct-card"><div class="ct-icon">🔗</div><div><div class="ct-label">LinkedIn</div><div class="ct-value"><a href="https://www.linkedin.com/in/sefdineahmed/" target="_blank">linkedin.com/in/sefdineahmed</a></div></div></div>
-        <div class="ct-card"><div class="ct-icon">💻</div><div><div class="ct-label">GitHub</div><div class="ct-value"><a href="https://github.com/sefdineahmed" target="_blank">github.com/sefdineahmed</a></div></div></div>
-        <div class="ct-card"><div class="ct-icon">📍</div><div><div class="ct-label">Localisation</div><div class="ct-value">Dakar, Sénégal · Remote OK</div></div></div>
-      </div>
-      <div class="form-box">
-        <div class="form-title">💬 Envoyez-moi un message</div>
-        <form id="cform">
-          <div class="form-group"><label>Votre nom</label><input type="text" id="f-nom" placeholder="Marie Dupont" /></div>
-          <div class="form-group"><label>Votre email</label><input type="email" id="f-email" placeholder="marie@entreprise.com" /></div>
-          <div class="form-group"><label>Votre message</label><textarea id="f-msg" placeholder="Bonjour Ahmed, ..."></textarea></div>
-          <button type="submit" class="submit-btn">📨 &nbsp;Envoyer le message</button>
-        </form>
-        <div class="form-ok" id="form-ok">✅ Message reçu ! Je vous répondrai dans les 24h.</div>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-book fa-sm"></i> FORMATION</h2>
+                <div class="hr"></div>
 
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="footer-brand">Ahmed Sefdine</div>
-    <div class="footer-sub">Business Intelligence Analyst Junior · Dakar, Sénégal</div>
-  </div>
-  <div class="footer-links">
-    <a href="mailto:ahmed.sefdine@uadb.edu.sn"><i class="fa fa-envelope"></i> Email</a>
-    <a href="https://www.linkedin.com/in/sefdineahmed/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a href="https://github.com/sefdineahmed" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-    <span style="font-size:0.73rem;color:#9ca3af;">© <span id="yr"></span> Ahmed Sefdine</span>
-  </div>
-</footer>
+                <h4 class="sigle"><i class="fas fa-user-graduate fa-sm"></i> Master 2 &mdash; Statistique et Informatique Décisionnelle</h4>
+                <h5 class="job-school">Université Alioune Diop (UADB)</h5>
+                <h6 class="time-location">
+                    <span><i class="fas fa-calendar-alt fa-sm"></i> 2022 &hyphen; 2025</span>
+                    <span class="city"><i class="fas fa-map-marker-alt"></i> Bambey, Sénégal</span>
+                </h6>
+                <ul>
+                    <li><span class="achievement">Mémoire de recherche : Analyse de survie du cancer de l'estomac au Sénégal</span></li>
+                </ul>
 
-<div id="btt" title="Retour en haut">↑</div>
+                <div class="dashed-hr"></div>
 
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  window.addEventListener('scroll', () => {
-    document.getElementById('btt').classList.toggle('show', window.scrollY > 200);
-  });
-  document.getElementById('btt').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mmenu').classList.add('open'));
-  document.getElementById('mclose').addEventListener('click', () => document.getElementById('mmenu').classList.remove('open'));
-  document.getElementById('cform').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const n = document.getElementById('f-nom').value.trim();
-    const em = document.getElementById('f-email').value.trim();
-    const m = document.getElementById('f-msg').value.trim();
-    if (n && em && m) {
-      document.getElementById('form-ok').style.display = 'block';
-      e.target.reset();
-      setTimeout(() => { document.getElementById('form-ok').style.display = 'none'; }, 5000);
-    }
-  });
-</script>
+                <h4 class="sigle"><i class="fas fa-user-graduate fa-sm"></i> Licence Professionnelle &mdash; Mathématiques, Statistique et Informatique Décisionnelle</h4>
+                <h5 class="job-school">Université des Comores</h5>
+                <h6 class="time-location">
+                    <span><i class="fas fa-calendar-alt fa-sm"></i> 2019 &hyphen; 2020</span>
+                    <span class="city"><i class="fas fa-map-marker-alt"></i> Moroni, Comores</span>
+                </h6>
+
+                <div class="dashed-hr"></div>
+
+                <h4 class="sigle"><i class="fas fa-user-graduate fa-sm"></i> DUT &mdash; Statistique</h4>
+                <h5 class="job-school">Université des Comores</h5>
+                <h6 class="time-location">
+                    <span><i class="fas fa-calendar-alt fa-sm"></i> 2017 &hyphen; 2019</span>
+                    <span class="city"><i class="fas fa-map-marker-alt"></i> Moroni, Comores</span>
+                </h6>
+            </div>
+
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-language fa-sm"></i> LANGUES</h2>
+                <div class="hr"></div>
+                <div class="language">
+                    <span class="language-item">Français</span>
+                    <progress max="100" value="95"></progress>
+                    <p class="level">Courant (langue de travail)</p>
+                </div>
+                <div class="language">
+                    <span class="language-item">Anglais</span>
+                    <progress max="100" value="60"></progress>
+                    <p class="level">Intermédiaire (lecture technique / veille)</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-rocket fa-sm"></i> SOFT SKILLS & CENTRES D'INTÉRÊT</h2>
+                <div class="hr"></div>
+                <div class="interest py-1">
+                    <i class="fas fa-lightbulb"></i>
+                    <span> Curiosité intellectuelle</span>
+                </div>
+                <div class="interest py-1">
+                    <i class="fas fa-chart-line"></i>
+                    <span> Esprit d'analyse</span>
+                </div>
+                <div class="interest py-1">
+                    <i class="fas fa-comments"></i>
+                    <span> Vulgarisation de concepts complexes</span>
+                </div>
+                <div class="interest py-1">
+                    <i class="fas fa-book-reader"></i>
+                    <span> Veille technologique (Data Science, IA) &middot; Coursera, Kaggle</span>
+                </div>
+                <div class="interest py-1">
+                    <i class="fas fa-running"></i>
+                    <span> Sport d'endurance</span>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </section> <!-- #left-side -->
+
+        <section class="right-side"> <!-- #right-side-->
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-project-diagram fa-sm"></i> PROJET DE RECHERCHE</h2>
+                <div class="hr"></div>
+                <h4 class="sigle">Analyse de survie du cancer de l'estomac au Sénégal</h4>
+                <h6 class="time-location"><span><i class="fas fa-calendar-alt"></i> Déc 2024 &hyphen; Avr 2025</span><span class="city"><i class="fas fa-map-marker-alt"></i> UADB, Sénégal</span></h6>
+                <span class="item"><i class="fab fa-github"></i> <a href="https://github.com/sefdineahmed/shahidi" target="_blank" title="Dépôt GitHub du projet">github.com/sefdineahmed/shahidi</a></span>
+                <p class="description">Mémoire de Master 2 basé sur 13 ans de données rétrospectives portant sur 337 patients.</p>
+                <ul>
+                    <li class="achievement">Implémentation des modèles de régression de Cox et Kaplan&ndash;Meier pour identifier les facteurs pronostiques majeurs</li>
+                    <li class="achievement">Comparaison de trois modèles avancés (Random Survival Forest, Gradient Boosting, Deep Survival) pour améliorer la prédiction de la durée de survie</li>
+                    <li class="achievement">Mémoire de recherche soutenu publiquement, avec une précision supérieure aux modèles traditionnels sur le jeu de données local</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-database fa-sm"></i> PROJETS DATA</h2>
+                <div class="hr"></div>
+
+                <h4 class="sigle">Superstore Business Intelligence Dashboard</h4>
+                <span class="item"><i class="fab fa-github"></i> <a href="https://github.com/sefdineahmed/sefdine-portfolio/tree/main/superstore-bi" target="_blank" title="Dépôt GitHub du projet">sefdine-portfolio/superstore-bi</a></span>
+                <p class="description">Solution BI complète pour le suivi en temps réel de la performance commerciale et de la rentabilité.</p>
+                <ul>
+                    <li class="achievement">Modèle de données robuste, indicateurs DAX et dashboard interactif livré sous Power BI</li>
+                </ul>
+
+                <div class="dashed-hr"></div>
+
+                <h4 class="sigle">NYC Taxi Data Analytics</h4>
+                <span class="item"><i class="fab fa-github"></i> <a href="https://github.com/sefdineahmed/sefdine-portfolio/tree/main/nyc-taxi" target="_blank" title="Dépôt GitHub du projet">sefdine-portfolio/nyc-taxi</a></span>
+                <p class="description">Analyse des trajets de taxis jaunes à New York pour identifier tendances de mobilité et facteurs de revenus.</p>
+                <ul>
+                    <li class="achievement">Extraction, nettoyage et analyse SQL, complétés par des visualisations Power BI</li>
+                </ul>
+
+                <div class="dashed-hr"></div>
+
+                <h4 class="sigle">Customer Churn Analytics</h4>
+                <span class="item"><i class="fab fa-github"></i> <a href="https://github.com/sefdineahmed/sefdine-portfolio/tree/main/customer-churn" target="_blank" title="Dépôt GitHub du projet">sefdine-portfolio/customer-churn</a></span>
+                <p class="description">Analyse du désabonnement client d'un opérateur télécom : profils à risque, impact financier et fidélisation.</p>
+                <ul>
+                    <li class="achievement">Combinaison d'analyse statistique, de segmentation et de Machine Learning</li>
+                </ul>
+
+                <div class="dashed-hr"></div>
+
+                <h4 class="sigle">E-commerce Sales Analytics</h4>
+                <span class="item"><i class="fab fa-github"></i> <a href="https://github.com/sefdineahmed/sefdine-portfolio/tree/main/ecommerce-sales" target="_blank" title="Dépôt GitHub du projet">sefdine-portfolio/ecommerce-sales</a></span>
+                <p class="description">Analyse des ventes e-commerce pour identifier produits et clients les plus rentables.</p>
+                <ul>
+                    <li class="achievement">Transformation de données transactionnelles brutes en indicateurs clés et recommandations opérationnelles</li>
+                </ul>
+
+                <div class="dashed-hr"></div>
+
+                <h4 class="sigle">Hotel Booking Analytics</h4>
+                <span class="item"><i class="fab fa-github"></i> <a href="https://github.com/sefdineahmed/sefdine-portfolio/tree/main/hotel-booking" target="_blank" title="Dépôt GitHub du projet">sefdine-portfolio/hotel-booking</a></span>
+                <p class="description">Analyse du comportement client et des taux d'annulation de deux hôtels (Resort & City Hotel).</p>
+                <ul>
+                    <li class="achievement">Identification des leviers de réduction des annulations et d'optimisation de la gestion des capacités</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-cogs fa-sm"></i> COMPÉTENCES & MAÎTRISE</h2>
+                <div class="hr"></div>
+                <div id="skillset">
+                    <h4>Langages & Analyse</h4>
+                    <div class="language">
+                        <span class="skill-item">Python (Pandas, NumPy, Scikit-learn): <progress max="100" value="90"></progress></span>
+                    </div>
+                    <div class="language">
+                        <span class="skill-item">SQL (PostgreSQL, MySQL): <progress max="100" value="85"></progress></span>
+                    </div>
+                    <div class="language">
+                        <span class="skill-item">Power BI (DAX, dashboards): <progress max="100" value="90"></progress></span>
+                    </div>
+                    <div class="language">
+                        <span class="skill-item">Machine Learning (RF, Gradient Boosting): <progress max="100" value="75"></progress></span>
+                    </div>
+                    <div class="language">
+                        <span class="skill-item">LaTeX: <progress max="100" value="70"></progress></span>
+                    </div>
+
+                    <div class="dashed-hr"></div>
+
+                    <div class="skillset">
+                        <h3>Statistiques & Modélisation</h3>
+                        <ul>
+                            <li class="skill-item">Régression de Cox</li>
+                            <li class="skill-item">Régression logistique</li>
+                            <li class="skill-item">Analyse de survie (Kaplan&ndash;Meier)</li>
+                            <li class="skill-item">Random Forest</li>
+                            <li class="skill-item">Gradient Boosting</li>
+                        </ul>
+                    </div>
+                    <div class="skillset">
+                        <h3>Visualisation & BI</h3>
+                        <ul>
+                            <li class="skill-item">Power BI</li>
+                            <li class="skill-item">Matplotlib</li>
+                            <li class="skill-item">Seaborn</li>
+                            <li class="skill-item">Apache Superset</li>
+                        </ul>
+                    </div>
+                    <div class="skillset">
+                        <h3>ETL & Collecte</h3>
+                        <ul>
+                            <li class="skill-item">Talend Open Studio</li>
+                            <li class="skill-item">KoboToolbox</li>
+                            <li class="skill-item">SPSS</li>
+                        </ul>
+                    </div>
+                    <div class="skillset">
+                        <h3>Bureautique</h3>
+                        <ul>
+                            <li class="skill-item">Excel avancé</li>
+                            <li class="skill-item">Access</li>
+                            <li class="skill-item">PowerPoint</li>
+                        </ul>
+                    </div>
+                    <div class="skillset">
+                        <h3>Version Control</h3>
+                        <ul>
+                            <li class="skill-item">Git</li>
+                            <li class="skill-item">GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h2 class="subtitle"><i class="fas fa-gem fa-sm"></i> CITATION</h2>
+                <div class="hr"></div>
+                <p class="quote-desc"><sup><i class="fas fa-quote-left fa-xs"></i></sup>Sans données, vous n'êtes qu'une personne de plus avec une opinion.<sup><i class="fas fa-quote-right fa-xs"></i></sup></p>
+                <span class="author">W. Edwards Deming</span>
+                <div class="clr"></div>
+            </div>
+        </section><!-- right side -->
+
+        <div class="clr"></div>
+    </main>
+    <footer id="main-footer">
+        <p>Conçu avec <i class="fas fa-heart"></i> par <a href="https://github.com/sefdineahmed" target="_blank" title="Compte GitHub">AHMED SEFDINE</a></p>
+        <p><i class="fab fa-creative-commons"></i> Licence Creative Commons</p>
+    </footer>
 </body>
 </html>

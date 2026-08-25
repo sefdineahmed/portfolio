@@ -1,0 +1,294 @@
+/* Template Name: First Resume/CV Template 
+ * Version: 1.0
+ * Responsive: No
+ * CSS Tech: Floats
+ * Original Author: AL-FAHAMI TOIHIR (github.com/alfahami)
+ * License: MIT
+ * Adapted for: AHMED SEFDINE - Data Analyst
+ * Website: https://sefdineahmed.github.io/
+*/
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Styles */
+body, html {
+    background: #e7e7e7;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.7em;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+i {
+    color:  #333;
+    margin-right: 5px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: bolder;
+    font-size: 2.5em;
+    line-height: 2.5em;
+}
+
+
+h4 {
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+h5 {
+    color: #00b400;
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 0.9em;
+    font-weight: 300;
+}
+
+/* Classes */
+
+.main-wrapper {
+    background: #fff;
+    border: solid 1px #e5e4e2;
+    box-shadow: 6px 6px 5px 0 #000000bf;
+    color: #333;
+    max-width: 990px;
+    margin: 50px auto;
+    padding: 30px;
+}
+
+@media (max-width: 910px) {
+    .main-wrapper {
+        max-width: inherit;
+    }
+
+    
+    
+    #main-header .right img {
+        float: right;
+        position: absolute;
+        top: 110px;
+        right: 30px;
+        padding: 0;
+        height: 50px;
+        width: 50px;
+    }
+
+    #main-header h1 {
+        font-size: 1rem;
+    }
+
+    #main-header .navbar ul {
+        margin: 0 auto;
+    }
+
+    #main-header .item {
+        font-size: 0.65rem;
+        float: left;
+        display: block;
+        
+    }
+ 
+    section.right-side {
+         float: none;
+         width: 100%;
+    }
+
+    section.left-side {
+        float: none;
+        width: 100%;
+    }
+    .left-side .subsection,
+    .right-side .subsection { display: block; }
+}
+
+@media(max-width: 320px) {
+    #main-header .right img {
+        display: none;
+    }
+}
+
+.fa-calendar-alt {
+    font-weight: 100;
+}
+
+.py-1 {
+    margin: 10px 0;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.item {
+    font-size: 0.9em;
+    font-weight: bolder;
+    padding-right: 27px;
+}
+
+.subsection {
+    margin: 30px 0;
+}
+
+.dashed-hr {
+    border: dashed 0.5px  #a9a9a9;
+    margin: 10px 0;
+}
+
+.hr {
+    border-radius: 8px;
+    border: solid 2px #333;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.job-desc {
+    margin-top: 20px;
+}
+
+.city {
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.language {
+    display: block ;
+    font-weight: 600;
+    font-size: 1em;
+    margin: 20px 0;
+}
+
+.language-item {
+    font-size: 1.2em;
+}
+
+.level {
+    font-size: 1em;
+    font-weight: 100;
+    line-height: 1em;
+    margin: 0;
+}
+
+.interest {
+    font-size: 1.2em;
+}
+
+.skillset {
+    margin: 10px 0;
+}
+
+.skill-item {
+    margin: 10px 0;
+}
+
+.skillset ul {
+    display: inline;
+    list-style-type: none;
+}
+
+ul li.skill-item {
+    display: inline;
+    margin-right: 30px;
+
+}
+
+.fa-quote-left,
+.fa-quote-right {
+    color: #333;
+    font-size: 0.5em;
+    margin: 0;
+}
+
+.quote-desc {
+    display: inline;
+    font-style: italic;
+}
+
+.author {
+    display: block;
+    font-weight: 600;
+    float: right;
+    margin-top: 25px;
+}
+
+.clr {
+    clear: both;
+}
+
+header i {
+    color: #00b400;
+}
+
+header img {
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;  
+}
+
+header li{
+    display: inline;
+    list-style-type: none;
+}
+
+progress {
+    border-radius: 2%;
+    float: right;
+    height: 10px;
+    line-height: 1.7em;
+    margin: 0 10px;
+    width: 72%;
+}
+
+.right-side {
+    float: right;
+    width: 45%;
+}
+
+.left-side {
+    float: left;
+    width: 50%;
+}
+
+
+footer {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #00b400;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
