@@ -33,7 +33,7 @@ Ce dataset contient des millions d'enregistrements de trajets, avec des informat
 - **SQL** : requêtes d'analyse et de préparation
 - **Python** : chargement initial et post-traitement
 - **Pandas** : manipulation complémentaire
-- **Power BI** : création du dashboard final
+- **Appache Superset** : création du dashboard final
 
 
 ## 5. Méthodologie
@@ -124,7 +124,7 @@ L'analyse fait ressortir :
 ## 10. Structure du projet
 
 ```
-03-nyc-taxi-analytics/
+nyc-taxi/
 │
 ├── data/
 │   └── taxi_trips.csv

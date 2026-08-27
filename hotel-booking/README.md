@@ -31,7 +31,7 @@ Ce jeu de données contient des informations sur les réservations de deux hôte
 - **Pandas** : manipulation des données
 - **NumPy** : calculs numériques
 - **Matplotlib / Seaborn** : visualisations
-- **Power BI** : dashboard interactif
+- **Appache Superset** : dashboard interactif
 
 
 ## 5. Méthodologie
@@ -116,7 +116,7 @@ Les analyses révèlent :
 ## 10. Structure du projet
 
 ```
-04-hotel-booking-analytics/
+hotel-booking/
 │
 ├── data/
 │   └── hotel_bookings.csv

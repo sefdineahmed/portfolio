@@ -127,7 +127,7 @@ Les analyses mettent en évidence :
 ## 10. Structure du projet
 
 ```
-01-ecommerce-sales-analytics/
+ecommerce-sales/
 │
 ├── data/
 │   └── ecommerce.csv

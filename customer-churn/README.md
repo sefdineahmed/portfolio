@@ -31,7 +31,7 @@ Ce dataset contient des informations sur 7 043 clients, avec des variables démo
 - **Pandas / NumPy** : manipulation et calculs
 - **Matplotlib / Seaborn** : visualisations
 - **Scikit-learn** : modélisation prédictive
-- **Power BI** : dashboard interactif
+- **Appache Superset** : dashboard interactif
 
 
 ## 5. Méthodologie
@@ -136,7 +136,7 @@ Les résultats montrent :
 ## 10. Structure du projet
 
 ```
-05-customer-churn-analytics/
+customer-churn/
 │
 ├── data/
 │   └── telco_churn.csv

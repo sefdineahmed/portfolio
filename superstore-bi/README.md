@@ -29,16 +29,16 @@ Le jeu de données contient les ventes d'une grande surface américaine sur plus
 
 ## 4. Technologies
 
-- **Power BI** : création du dashboard interactif
-- **Power Query** : préparation et nettoyage des données
-- **DAX** : création de mesures et de KPI
+- **Appache Superset** : création du dashboard interactif
+- ~~**Power Query** : préparation et nettoyage des données~~
+- ~~**DAX** : création de mesures et de KPI~~
 - **Excel** : exploration initiale
-- **Data Modeling** : conception du modèle en étoile
+- ~~**Data Modeling** : conception du modèle en étoile~~
 
 
 ## 5. Méthodologie
 
-### Étape 1 : Data Preparation (Power Query)
+### Étape 1 : Data Preparation
 - Importation des données depuis un fichier Excel
 - Nettoyage des valeurs manquantes (suppression ou remplacement)
 - Vérification et correction des types de données
@@ -66,9 +66,9 @@ Dim_Product --- Fact_Sales --- Dim_Customer
 
 Les relations sont définies selon un schéma en étoile pour optimiser les performances et la clarté du modèle.
 
-### Étape 3 : Création des KPI avec DAX
+### Étape 3 : Création des KPI 
 
-Exemples de mesures DAX :
+Exemples de mesures:
 
 ```DAX
 Total Sales = SUM(Sales[Sales])
@@ -129,7 +129,7 @@ Les analyses permettent d'identifier :
 ## 9. Structure du projet
 
 ```
-02-superstore-business-intelligence/
+superstore-bi/
 │
 ├── data/
 │   └── superstore.xlsx
@@ -150,10 +150,9 @@ Les analyses permettent d'identifier :
 
 ## 10. Compétences démontrées
 
-- Power BI (création de dashboards interactifs)
-- Power Query (ETL)
-- DAX (mesures et KPI)
-- Modélisation dimensionnelle (schéma en étoile)
+- création de dashboards interactifs
+- ETL
+- mesures et KPI
 - Analyse business et traduction en indicateurs
 - Data storytelling
 
