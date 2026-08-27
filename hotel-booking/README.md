@@ -141,7 +141,7 @@ hotel-booking/
 - Analyse exploratoire approfondie
 - Feature engineering
 - KPI et mesure de performance
-- Power BI
+- Appache Superset
 - Recommandations orientées métier
 
 
