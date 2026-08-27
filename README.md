@@ -15,31 +15,31 @@ sefdine-portfolio/
 │
 ├── README.md                        
 │
-├── 01-ecommerce-sales-analytics/
+├── ecommerce-sales/
 │   ├── README.md
 │   ├── data/
 │   ├── notebooks/
 │   └── requirements.txt
 │
-├── 02-superstore-business-intelligence/
+├── superstore-bi/
 │   ├── README.md
 │   ├── data/
 │   ├── powerbi/
 │   └── screenshots/
-│── 03-customer-churn-analytics/
+│── customer-churn/
 |    ├── README.md
 |    ├── data/
 |    ├── notebooks/
 |    ├── models/
 |    └── powerbi/
 │
-├── 04-hotel-booking-analytics/
+├── hotel-booking/
 │   ├── README.md
 │   ├── data/
 │   ├── notebooks/
 │   └── powerbi/
 │
-├── 05-nyc-taxi-analytics/
+├── nyc-taxi/
    ├── README.md
    ├── data/
    ├── sql/
