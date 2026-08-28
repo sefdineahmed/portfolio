@@ -235,7 +235,7 @@ Dans ton cas :
 
 ```sql
 \copy "SalesAnalytics"."salesanalytics"
-FROM '/home/sefdine/github/sefdine-analytics-portfolio/01-ecommerce-sales-analytics/data/data.csv'
+FROM '/home/sefdine/github/sefdine-portfolio/ecommerce-sales/data/data.csv'
 WITH (
     FORMAT CSV,
     HEADER TRUE,
